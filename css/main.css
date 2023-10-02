@@ -1,0 +1,117 @@
+@import "./reset.css";
+
+:root {
+/* Color */
+--red: #ED3052;
+--red_hover: #ed4e6b;
+--white: #FFF;
+--border-radius: 6px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.115rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+}
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 15px 50px;
+    background: linear-gradient(93deg, #4CB8C4 0%, #3CD3AD 100%), #232323;
+}
+.header__title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: var(--white);
+}
+.header__form {
+    display: flex;
+    justify-content:space-between;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    width: 440px;
+    height: 54px;
+
+}
+.header__form__input {
+    padding-left: 10px;
+    flex-grow: 1;
+}
+.header__button {
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--red);
+}
+
+.header__button:hover {
+    background-color: var(--red_hover);
+}
+
+.header__button:active {
+    background-color: var(--red_hover);
+    transform: scale(1.01);
+}
+
+.card {
+    position: relative;
+    padding: 30px;
+    width: 360px;
+    border-radius: var(--border-radius);
+    background: var(--white);
+    box-shadow: 0px 5px 20px 0px rgba(27, 108, 114, 0.25);
+}
+.card::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -10px;
+    left: 10px;
+
+    width: calc(100% - 20px);
+    height: 100%;
+    border-radius: var(--border-radius);
+    background: var(--white);
+    box-shadow: 0px 5px 20px 0px rgba(27, 108, 114, 0.25);
+}
+.card__card-city {
+    position: relative;
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+.card__card-city::after {
+    content: "GB";
+    position: absolute;
+    margin-left: 8px;
+    padding: 3px 5px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: var(--border-radius)
+}
+.card__weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card__weather__value {
+    font-size: 5.75rem;
+
+}
+sup {
+    font-size: 50%;
+}
+.card__card-description {
+    font-size: 1.25rem;
+    font-weight: 400;
+}

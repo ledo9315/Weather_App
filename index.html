@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header">
+      <h1 class="header__title">WetterLive</h1>
+      <form class="header__form">
+        <input
+          class="header__form__input"
+          type="text"
+          placeholder="Suche nach deinem Standort"
+        />
+        <button class="header__button">Suchen</button>
+      </form>
+    </header>
+    <!-- /header -->
+
+    <!-- card -->
+    <main class="card">
+      <h2 class="card__card-city">London</h2>
+      <div class="card__weather">
+        <div class="card__weather__value">11<sup>°c</sup></div>
+        <img
+          class="card__weather__img"
+          src="./img/weather_icon.png"
+          alt="weather_icon"
+        />
+      </div>
+      <div class="card__card-description">Wolkig</div>
+    </main>
+    <!-- /card -->
+
+    <script src="./main.js"></script>
+  </body>
+</html>
