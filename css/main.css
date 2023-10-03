@@ -111,6 +111,10 @@ body {
     font-size: 50%;
 }
 
+.card__weather__img {
+ margin-right: 20px;
+}
+
 .card__card-description {
     font-size: 1.25rem;
     font-weight: 400;

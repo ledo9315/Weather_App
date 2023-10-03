@@ -1,19 +1,36 @@
-//api-key
 const apiKey = '9ab38fc6ee3445fe8ab120343230310';
 
-//html-elemente
 const form = document.querySelector('#form');
 const input = document.querySelector('#inputCity');
 const header = document.querySelector('.header');
 
-
 form.addEventListener('submit', async function(event) {
     event.preventDefault();
-    
-    let city = input.value.trim();
-    
+    let city = input.value.trim(); 
     const data = await getWeather(city);
 
+    if(data.error) {
+        removeLastCard();
+        showErrorMessage(data.error.message);
+        clearInput();
+    }else {
+        removeLastCard();
+        const weatherData = {
+            name: data.location.name,
+            country: data.location.country,
+            temp: data.current.temp_c,
+            condition: data.current.condition.text,
+            icon: data.current.condition.icon
+        }
+        showCard(weatherData);
+        clearInput();
+    }
+});
+
+/* fetch(query).then((response) => {
+    return response.json()
+}).then((data) => {
+    console.log(data);
     if(data.error) {
         removeLastCard();
         showErrorMessage(data.error.message);
@@ -21,19 +38,23 @@ form.addEventListener('submit', async function(event) {
     }
     else {
         removeLastCard();
-
-        const weatherData = {
-            name: data.location.name,
-            country: data.location.country,
-            temp: data.current.temp_c,
-            condition: data.current.condition.text
-        }
-
-        showCard(weatherData);
+        showCard(
+            data.location.name,
+            data.location.country,
+            data.current.temp_c,
+            data.current.condition.text
+            );
         clearInput();
     }
-});
+})   */
 
+async function getWeather(city) {
+    const query = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=de`;
+    const response = await fetch(query);
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
 
 function removeLastCard() {
     const prevCard = document.querySelector('.card');
@@ -50,14 +71,6 @@ function showErrorMessage(message) {
     header.insertAdjacentHTML('afterend', card);
 }
 
-async function getWeather(city) {
-    const query = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=de`;
-    const response = await fetch(query);
-    const data = await response.json();
-    console.log(data);
-    return data;
-}
-
 function showCard(weatherData) {
     const card = `
     <main class="card">
@@ -66,7 +79,7 @@ function showCard(weatherData) {
       <div class="card__weather__value">${weatherData.temp}<sup>°c</sup></div>
       <img
         class="card__weather__img"
-        src="./img/weather_icon.png"
+        src="${weatherData.icon}"
         alt="weather_icon"
       />
     </div>
