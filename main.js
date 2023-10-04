@@ -27,26 +27,31 @@ form.addEventListener('submit', async function(event) {
     }
 });
 
-/* fetch(query).then((response) => {
-    return response.json()
-}).then((data) => {
-    console.log(data);
-    if(data.error) {
-        removeLastCard();
-        showErrorMessage(data.error.message);
-        clearInput();
-    }
-    else {
-        removeLastCard();
-        showCard(
-            data.location.name,
-            data.location.country,
-            data.current.temp_c,
-            data.current.condition.text
-            );
-        clearInput();
-    }
-})   */
+// fetch(query)
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((data) => {
+//     console.log(data);
+//     if (data.error) {
+//       removeLastCard();
+//       showErrorMessage(data.error.message);
+//       clearInput();
+//     } else {
+//       removeLastCard();
+//       showCard(
+//         data.location.name,
+//         data.location.country,
+//         data.current.temp_c,
+//         data.current.condition.text
+//       );
+//       clearInput();
+//     }
+//   })
+//   .catch((error) => {
+//     console.error(data.error.message, error);
+//   });
+
 
 async function getWeather(city) {
     const query = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no&lang=de`;
