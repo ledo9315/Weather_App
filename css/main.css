@@ -47,7 +47,6 @@ body {
 
 .header__form__input {
     flex-grow: 1;
-    text-align: center;
     @media(max-width: 460px) {
         padding-top: 15px;
     }
